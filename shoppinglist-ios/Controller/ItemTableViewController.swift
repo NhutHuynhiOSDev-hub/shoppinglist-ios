@@ -9,10 +9,9 @@ import UIKit
 
 class ItemTableViewController: BaseTableViewController {
     
-    var items: [Item] = [Item].load() {
-        didSet {
-            items.save()
-        }
+    var list : ShoppingList!
+    var items: [Item] {
+        get { return list.items }
     }
     
     @IBAction func didSelectAdd(_ sender: UIBarButtonItem) {
@@ -24,7 +23,7 @@ class ItemTableViewController: BaseTableViewController {
             let itemCount = self.items.count
             let item      = Item(name: itemName)
             
-            self.items.append(item)
+            self.list.items.append(item)
             self.tableView.insertRows(at: [IndexPath(row: itemCount, section: 0)], with: .top)
         })
     }
@@ -32,7 +31,7 @@ class ItemTableViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Shopping List"
+        title = list.name
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.rightBarButtonItems?.append(editButtonItem)
     }
@@ -69,16 +68,24 @@ class ItemTableViewController: BaseTableViewController {
         return true
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            list.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
-        let item = items.remove(at: sourceIndexPath.row)
-        
-        items.insert(item, at: destinationIndexPath.row)
+     
+        list.swapItem(sourceIndexPath.row, destinationIndexPath.row)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        items[indexPath.row] = items[indexPath.row].toggelCheck()
+        list.toggleCheckItem(atIndex: indexPath.row)
+        
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
 }

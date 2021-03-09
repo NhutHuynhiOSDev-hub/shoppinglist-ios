@@ -15,6 +15,8 @@
 		0551AA3325F74E7B00061FB4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551AA3225F74E7B00061FB4 /* Item.swift */; };
 		0551AA4F25F7505A00061FB4 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551AA4E25F7505A00061FB4 /* ItemTableViewController.swift */; };
 		056C7C1825F75DDD009F17F5 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056C7C1725F75DDD009F17F5 /* BaseTableViewController.swift */; };
+		056C7C1B25F760D1009F17F5 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056C7C1A25F760D1009F17F5 /* ShoppingList.swift */; };
+		056C7C1F25F76AD2009F17F5 /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056C7C1E25F76AD2009F17F5 /* ShoppingListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		0551AA3225F74E7B00061FB4 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0551AA4E25F7505A00061FB4 /* ItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		056C7C1725F75DDD009F17F5 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		056C7C1A25F760D1009F17F5 /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
+		056C7C1E25F76AD2009F17F5 /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				0551AA3225F74E7B00061FB4 /* Item.swift */,
+				056C7C1A25F760D1009F17F5 /* ShoppingList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 			children = (
 				0551AA4E25F7505A00061FB4 /* ItemTableViewController.swift */,
 				056C7C1725F75DDD009F17F5 /* BaseTableViewController.swift */,
+				056C7C1E25F76AD2009F17F5 /* ShoppingListTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -176,8 +182,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056C7C1B25F760D1009F17F5 /* ShoppingList.swift in Sources */,
 				0551AA2625F74D5900061FB4 /* AppDelegate.swift in Sources */,
 				0551AA2725F74D5900061FB4 /* SceneDelegate.swift in Sources */,
+				056C7C1F25F76AD2009F17F5 /* ShoppingListTableViewController.swift in Sources */,
 				056C7C1825F75DDD009F17F5 /* BaseTableViewController.swift in Sources */,
 				0551AA4F25F7505A00061FB4 /* ItemTableViewController.swift in Sources */,
 				0551AA3325F74E7B00061FB4 /* Item.swift in Sources */,
