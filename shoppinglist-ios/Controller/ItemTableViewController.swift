@@ -7,32 +7,26 @@
 
 import UIKit
 
-class ItemTableViewController: UITableViewController {
+class ItemTableViewController: BaseTableViewController {
     
-    var items: [Item] = Item.fake(10)
+    var items: [Item] = [Item].load() {
+        didSet {
+            items.save()
+        }
+    }
     
     @IBAction func didSelectAdd(_ sender: UIBarButtonItem) {
         
-        let alert = UIAlertController(title: "New shopping list item", message: "Enter item to add to the shopping list:", preferredStyle: .alert)
-        
-        alert.addTextField(configurationHandler: nil)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: {
+        requestInput(title: "New shopping list item", message: "Enter item to add to the shopping list:", handler: {
             
-            (_) in
+            itemName in
             
-            if let itemName = alert.textFields?[0].text  {
-                
-                let itemCount = self.items.count
-                let item      = Item(name: itemName)
-                
-                self.items.append(item)
-                self.tableView.insertRows(at: [IndexPath(row: itemCount, section: 0)], with: .top
-                )
-            }
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
+            let itemCount = self.items.count
+            let item      = Item(name: itemName)
+            
+            self.items.append(item)
+            self.tableView.insertRows(at: [IndexPath(row: itemCount, section: 0)], with: .top)
+        })
     }
     
     override func viewDidLoad() {
@@ -80,5 +74,11 @@ class ItemTableViewController: UITableViewController {
         let item = items.remove(at: sourceIndexPath.row)
         
         items.insert(item, at: destinationIndexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        items[indexPath.row] = items[indexPath.row].toggelCheck()
+        tableView.reloadRows(at: [indexPath], with: .fade)
     }
 }
