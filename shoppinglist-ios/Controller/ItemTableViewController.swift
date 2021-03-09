@@ -40,6 +40,7 @@ class ItemTableViewController: UITableViewController {
         
         self.title = "Shopping List"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.rightBarButtonItems?.append(editButtonItem)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,5 +63,22 @@ class ItemTableViewController: UITableViewController {
         cell.accessoryType   = item.isChecked ? .checkmark : .none
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        let item = items.remove(at: sourceIndexPath.row)
+        
+        items.insert(item, at: destinationIndexPath.row)
     }
 }
